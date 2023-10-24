@@ -41,8 +41,8 @@
         </td>
         <td><%=trabajadores.getDni()%>
         </td>
-        <td><a class="btn btn-success" href="<%=request.getContextPath()%>/biciServlet?action=edit&id=<%= trabajadores.getDni() %>">Editar</a></td>
-        <td><a onclick="return confirm('¿Esta seguro de borrar?')" class="btn btn-danger" href="<%=request.getContextPath()%>/biciServlet?action=del&id=<%= trabajadores.getDni() %>">Borrar</a></td>
+        <td><a class="btn btn-success" href="<%=request.getContextPath()%>/biciServlet?action=edit&dni=<%= trabajadores.getDni() %>">Editar</a></td>
+        <td><a onclick="return confirm('¿Esta seguro de borrar?')" class="btn btn-danger" href="<%=request.getContextPath()%>/biciServlet?action=del&dni=<%= trabajadores.getDni() %>">Borrar</a></td>
       </tr>
       <% } %>
     </table>
