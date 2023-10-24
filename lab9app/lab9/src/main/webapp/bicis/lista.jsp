@@ -24,8 +24,8 @@
     <hr/>
     <table class="table table-striped mt-3">
       <tr class="table-primary">
-        <th>Nombre</th>
-        <th>Apellido</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
         <th>Correo</th>
         <th>DNI</th>
         <th></th>
