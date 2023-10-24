@@ -108,6 +108,37 @@ public class trabajadoresDao {
 
     }
 
+    public void actualizar(trabajadores trabajadores){
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        String url = "jdbc:mysql://localhost:3306/bicicentro";
+        String username = "root";
+        String password = "root";
+
+        String sql = "update trabajadores set nombres = ?, apellidos = ?, correo = ?, dni = ?, idsede = ?";
+
+        try(Connection connection = DriverManager.getConnection(url,username,password);
+            PreparedStatement pstmt = connection.prepareStatement(sql)){
+
+            pstmt.setString(1,trabajadores.getNombres());
+            pstmt.setString(2,trabajadores.getApellidos());
+            pstmt.setString(3,trabajadores.getCorreo());
+            pstmt.setString(4, trabajadores.getDni());
+            pstmt.setInt(5,trabajadores.getIdsede());
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
     public void borrar (String dni) throws SQLException{
 
         try{
