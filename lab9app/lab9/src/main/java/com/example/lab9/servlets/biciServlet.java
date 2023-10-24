@@ -7,6 +7,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 @WebServlet(name = "biciServlet", value = "/biciServlet")
@@ -41,6 +42,19 @@ public class biciServlet extends HttpServlet {
                 }else{
                     response.sendRedirect(request.getContextPath()+ "/biciServlet");
                 }
+                break;
+            case  "del":
+                String idd = request.getParameter("dni");
+                trabajadores trabajadores1 = trabajadoresDao.buscarPorDni(dni);
+
+                if(trabajadores1 != null){
+                    try {
+                        trabajadoresDao.borrar(dni);
+                    } catch (SQLException e) {
+                        System.out.println("Log: excepcion: "+ e.getMessage());
+                    }
+                }
+                response.sendRedirect(request.getContextPath() + "/biciServlet");
                 break;
         }
     }
