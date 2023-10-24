@@ -34,6 +34,13 @@ public class biciServlet extends HttpServlet {
             case "edit":
                 String dni = request.getParameter("dni");
                 trabajadores trabajadores = trabajadoresDao.buscarPorDni(dni);
+
+                if(trabajadores != null){
+                    request.setAttribute("bicis", trabajadores);
+                    request.getRequestDispatcher("bicis/form_edit.jsp").forward(request,response);
+                }else{
+                    response.sendRedirect(request.getContextPath()+ "/biciServlet");
+                }
                 break;
         }
     }
