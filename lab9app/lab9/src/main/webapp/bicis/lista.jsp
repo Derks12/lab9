@@ -22,11 +22,30 @@
       <a class="btn btn-primary float-end mt-1" href="<%=request.getContextPath() %>/biciServlet?action=new">Crear trabajador</a>
     </div>
     <hr/>
-
-
-
-
+    <table class="table table-striped mt-3">
+      <tr class="table-primary">
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Correo</th>
+        <th>DNI</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <% for (trabajadores trabajadores : lista) { %>
+      <tr>
+        <td><%=trabajadores.getNombres()%>
+        </td>
+        <td><%=trabajadores.getApellidos()%>
+        </td>
+        <td><%=trabajadores.getCorreo()%>
+        </td>
+        <td><%=trabajadores.getDni()%>
+        </td>
+        <td><a class="btn btn-success" href="<%=request.getContextPath()%>/biciServlet?action=edit&id=<%= trabajadores.getDni() %>"> </a></td>
+        <td><a onclick="return confirm('¿Esta seguro de borrar?')" class="btn btn-danger" href="<%=request.getContextPath()%>/biciServlet?action=del&id=<%= trabajadores.getDni() %>">Borrar</a></td>
+      </tr>
+      <% } %>
+    </table>
   </div>
-
 </body>
 </html>
