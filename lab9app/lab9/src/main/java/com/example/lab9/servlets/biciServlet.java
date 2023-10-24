@@ -44,12 +44,12 @@ public class biciServlet extends HttpServlet {
                 }
                 break;
             case  "del":
-                String idd = request.getParameter("dni");
-                trabajadores trabajadores1 = trabajadoresDao.buscarPorDni(dni);
+                String dni1 = request.getParameter("dni");
+                trabajadores trabajadores1 = trabajadoresDao.buscarPorDni(dni1);
 
                 if(trabajadores1 != null){
                     try {
-                        trabajadoresDao.borrar(dni);
+                        trabajadoresDao.borrar(dni1);
                     } catch (SQLException e) {
                         System.out.println("Log: excepcion: "+ e.getMessage());
                     }
