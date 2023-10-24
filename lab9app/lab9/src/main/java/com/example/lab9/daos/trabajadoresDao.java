@@ -1,5 +1,6 @@
 package com.example.lab9.daos;
 
+import java.nio.file.DirectoryNotEmptyException;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -41,7 +42,34 @@ public class trabajadoresDao {
         return lista;
     }
 
-    public void crear(String nombres, String apellidos, String correo, String dni,String idSede){}
+    public void crear(String nombres, String apellidos, String correo, String dni,int idsede){
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        String url = "jdbc:mysql://localhost:3306/bicicentro";
+        String username = "root";
+        String password = "root";
+
+        String sql = "insert into trabajadores (nombres, apellidos, correo, DNI, idsede) values (?,?,?,?,?)";
+
+        try(Connection connection = DriverManager.getConnection(url,username,password);
+            PreparedStatement pstmt = connection.prepareStatement(sql)){
+
+            pstmt.setString(1,nombres);
+            pstmt.setString(2,apellidos);
+            pstmt.setString(3,correo);
+            pstmt.setString(4, dni);
+            pstmt.setInt(5,idsede);
+
+            pstmt.executeUpdate();
+        }catch (SQLException e){
+            throw  new RuntimeException(e);
+        }
+    }
 
     public trabajadores buscarPorDni(String dni){
         trabajadores trabajadores = null;
@@ -80,5 +108,28 @@ public class trabajadoresDao {
 
     }
 
+    public void borrar (String dni) throws SQLException{
+
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        String url = "jdbc:mysql://localhost:3306/bicicentro";
+        String username = "root";
+        String password = "root";
+
+        String sql = "delete from trabajadores where dni = ?";
+
+        try(Connection connection = DriverManager.getConnection(url,username,password);
+            PreparedStatement pstmt = connection.prepareStatement(sql)){
+
+            pstmt.setString(1,dni);
+            pstmt.executeUpdate();
+        }
+
+
+    }
 
 }
