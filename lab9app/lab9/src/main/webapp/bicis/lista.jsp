@@ -21,6 +21,8 @@
       </a>
       <a class="btn btn-primary float-end mt-1" href="<%=request.getContextPath() %>/biciServlet?action=new">Crear trabajador</a>
     </div>
+    <hr/>
+
 
 
 
