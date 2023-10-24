@@ -6,6 +6,7 @@ public class trabajadores {
     private String apellidos;
     private String correo;
     private String dni;
+    private Integer idsede;
 
 
     public String getNombres() {
@@ -38,5 +39,13 @@ public class trabajadores {
 
     public void setDni(String dni) {
         this.dni = dni;
+    }
+
+    public Integer getIdsede() {
+        return idsede;
+    }
+
+    public void setIdsede(Integer idsede) {
+        this.idsede = idsede;
     }
 }
