@@ -33,12 +33,32 @@ public class biciServlet extends HttpServlet {
                 break;
             case "edit":
                 String dni = request.getParameter("dni");
-                trabajadores trabajadores = trabajadoresDao
+                trabajadores trabajadores = trabajadoresDao.buscarPorDni(dni);
+                break;
         }
     }
 
-    /*@Override
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
 
-    }*/
+        trabajadoresDao trabajadoresDao = new trabajadoresDao();
+
+        String action = request.getParameter("action") == null ? "crear" : request.getParameter("action");
+
+        switch (action){
+            case "crear":
+                String nombres = request.getParameter("nombres");
+                String apellidos = request.getParameter("apellidos");
+                String correo = request.getParameter("correo");
+                String dni = request.getParameter("DNI");
+                int idsede = Integer.parseInt(request.getParameter("idsede"));
+
+                trabajadores trabajadores = trabajadoresDao.buscarPorDni(dni);
+
+                if(trabajadores == null){
+                    trabajadoresDao.
+                }
+        }
+    }
 }
