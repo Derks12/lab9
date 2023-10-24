@@ -29,7 +29,7 @@ public class biciServlet extends HttpServlet {
                 rd.forward(request,response);
                 break;
             case "new":
-                request.getRequestDispatcher("bicis/form_new").forward(request,response);
+                request.getRequestDispatcher("bicis/form_new.jsp").forward(request,response);
                 break;
             case "edit":
                 String dni = request.getParameter("dni");
@@ -57,8 +57,12 @@ public class biciServlet extends HttpServlet {
                 trabajadores trabajadores = trabajadoresDao.buscarPorDni(dni);
 
                 if(trabajadores == null){
-                    trabajadoresDao.
+                    trabajadoresDao.crear(nombres,apellidos,correo,dni,idsede);
+                    response.sendRedirect(request.getContextPath() + "/biciServlet");
+                }else{
+                    request.getRequestDispatcher("bicis/form_new.jsp").forward(request,response);
                 }
+            break;
         }
     }
 }

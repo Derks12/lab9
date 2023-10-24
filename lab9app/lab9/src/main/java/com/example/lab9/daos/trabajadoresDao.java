@@ -54,7 +54,7 @@ public class trabajadoresDao {
         String username = "root";
         String password = "root";
 
-        String sql = "insert into trabajadores (nombres, apellidos, correo, DNI, idsede) values (?,?,?,?,?)";
+        String sql = "insert into trabajadores (nombres, apellidos, correo, dni, idsede) values (?,?,?,?,?)";
 
         try(Connection connection = DriverManager.getConnection(url,username,password);
             PreparedStatement pstmt = connection.prepareStatement(sql)){
