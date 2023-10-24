@@ -28,6 +28,12 @@ public class biciServlet extends HttpServlet {
                 RequestDispatcher rd = request.getRequestDispatcher("bicis/lista.jsp");
                 rd.forward(request,response);
                 break;
+            case "new":
+                request.getRequestDispatcher("bicis/form_new").forward(request,response);
+                break;
+            case "edit":
+                String dni = request.getParameter("dni");
+                trabajadores trabajadores = trabajadoresDao
         }
     }
 
